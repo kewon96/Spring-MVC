@@ -1,10 +1,9 @@
 package hello.servlet.domain.member;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter @Setter @NoArgsConstructor
+@Builder @AllArgsConstructor
 public class Member {
 
     private Long id;
