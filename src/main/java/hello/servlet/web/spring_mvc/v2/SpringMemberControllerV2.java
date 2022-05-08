@@ -6,8 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/spring-mvc/v2/members")
@@ -32,9 +33,9 @@ public class SpringMemberControllerV2 {
     }
 
     @RequestMapping("/save")
-    public ModelAndView save(Map<String, String> paramMap) {
-        String username = paramMap.get("username");
-        int age = Integer.parseInt(paramMap.get("age"));
+    public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
+        String username = request.getParameter("username");
+        int age = Integer.parseInt(request.getParameter("age"));
 
         Member member = new Member(username, age);
         memberRepository.save(member);
